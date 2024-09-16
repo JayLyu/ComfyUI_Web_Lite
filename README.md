@@ -6,17 +6,22 @@
 
 ## 如何使用
 
-**STEP 1** 使用命令启动 ComfyUI
+**STEP 1：** 在当前电脑中使用命令启动 ComfyUI
 
 ```shell
 python main.py --enable-cors-header
 ```
 
-**STEP 2** 使用 VsCode 的 *Open with Live Serve* 功能打开 `index.html` 即可。
+**STEP 2：** 打开 [jaylyu.github.io/ComfyUI-WebLite/](https://jaylyu.github.io/ComfyUI-WebLite/) 后，上传 `workflow_api.json` 文件即可使用。
 
-然后访问：`http://127.0.0.1:5500/index.html` 
+你也可以将仓库克隆到本地使用：
 
-TODO
+1. 克隆仓库到本地：`git clone https://github.com/JayLyu/ComfyUI-WebLite.git`
+2. 使用 VsCode 的 *Open with Live Serve* 功能打开 `index.html`
+3. 访问：[http://127.0.0.1:5500/index.html](http://127.0.0.1:5500/index.html)
+
+
+## TODO
 
 - ~~单 html 应用~~
 - ~~图片存储在 LocalStorage~~
