@@ -1,39 +1,99 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
+<html lang="zh">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>ComfyUI Web Lite</title>
-    <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ComfyUI Web Lite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
-    <!--[if lt IE 7]>
-      <p class="browsehappy">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="#">upgrade your browser</a> to improve your experience.
-      </p>
-    <![endif]-->
-    <div class="app">
-      <div class="form">
-        <input type="file" id="upload-flow-json" accept=".json" />
-        <div id="form-container"></div>
-        <button id="submit-button">Submit</button>
+  <body class="m-0 p-0 font-sans bg-gray-100">
+    <div class="flex h-screen">
+      <!-- 左侧面板 -->
+      <div class="w-1/4 min-w-[300px] bg-white shadow-md flex flex-col">
+        <div class="p-4 border-b">
+          <h2 class="text-lg font-semibold mb-2 text-gray-800">Settings</h2>
+          <label
+            for="upload-flow-json"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Upload workflow_api.json
+          </label>
+          <input
+            type="file"
+            id="upload-flow-json"
+            accept=".json"
+            class="w-full p-2 border rounded text-sm"
+          />
+        </div>
+        <div
+          id="form-container"
+          class="flex-grow p-4 space-y-4 overflow-y-auto"
+        >
+          <!-- 表单内容将在这里动态生成 -->
+        </div>
+        <div class="p-4 border-t">
+          <button
+            id="submit-button"
+            class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 text-sm"
+          >
+            Queue
+          </button>
+        </div>
       </div>
-      <div id="image-container"></div>
+
+      <!-- 右侧内容区 -->
+      <div class="flex-1 p-6 bg-gray-50 overflow-y-auto">
+        <h2 class="text-lg font-semibold mb-4 text-gray-800">
+          Generated Result
+        </h2>
+        <div
+          id="image-container"
+          class="flex flex-row flex-wrap gap-4 h-auto w-full empty-content"
+        ></div>
+      </div>
     </div>
 
-    <script src="./script1.js" async defer></script>
- 
+    <style>
+      .empty-content:empty::before {
+        content: "Empty";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        color: #9ca3af;
+        border: 2px dashed #d1d5db;
+        border-radius: 0.5rem;
+      }
+    </style>
+
+    <div
+      id="fullscreen-container"
+      class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50"
+    >
+      <div class="relative">
+        <img
+          id="fullscreen-image"
+          src=""
+          alt="Fullscreen Image"
+          class="max-w-full max-h-full"
+        />
+        <button
+          id="close-fullscreen"
+          class="absolute top-4 right-4 text-white text-2xl hover:text-gray-300"
+        >
+          &times;
+        </button>
+      </div>
+    </div>
+
+    <script src="./script.js" async defer></script>
   </body>
 </html>
