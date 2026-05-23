@@ -20,6 +20,22 @@ python main.py --enable-cors-header
 2. 使用 VsCode 的 *Open with Live Serve* 功能打开 `index.html`
 3. 访问：[http://127.0.0.1:5500/index.html](http://127.0.0.1:5500/index.html)
 
+在页面左侧 **ComfyUI 地址** 中填写服务地址（默认 `127.0.0.1:8188`），点击保存后会记住配置。
+
+### 隐藏表单字段
+
+在 `workflow_api.json` 的节点 `_meta` 中加入 `hide_inputs` 数组，可隐藏不需要暴露的输入项：
+
+```json
+"_meta": {
+  "title": "KSampler",
+  "hide_inputs": ["scheduler", "denoise"]
+}
+```
+
+### 模型下拉选择
+
+上传 workflow 后会自动请求 ComfyUI 的 `/object_info`，将 checkpoint、lora 等 COMBO 类型字段渲染为下拉框（需 ComfyUI 在线且 CORS 已开启）。
 
 ## TODO
 
@@ -27,4 +43,4 @@ python main.py --enable-cors-header
 - ~~图片存储在 LocalStorage~~
 - ~~样式优化~~
 - ~~隐藏特定字段的配置~~
-- 生成 checkpoints, loras... 等模型 Select 选择器
+- ~~生成 checkpoints, loras... 等模型 Select 选择器~~
